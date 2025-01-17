@@ -1,0 +1,69 @@
+int greenPin = 11;
+int yellowPin = 12;
+int redPin = 13;
+
+int analogPin = A2;
+int readVal;
+float V2;
+
+int DELAY_AMT = 1000;
+
+
+void setup()
+{
+  pinMode(11, OUTPUT);
+  pinMode(11, OUTPUT);
+  pinMode(11, OUTPUT);
+
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  digitalWrite(greenPin, LOW);
+  digitalWrite(yellowPin, LOW);
+  digitalWrite(redPin, LOW);
+
+  readVal = analogRead(analogPin);
+  V2 = (5./1023.)*readVal;
+  Serial.println(V2);
+
+  if (V2 >= 0)
+  {
+    digitalWrite(greenPin, HIGH);
+  }
+  if (V2 >= 3.)
+  {
+    digitalWrite(yellowPin, HIGH);
+  }
+  if (V2 >= 4.)
+  {
+    digitalWrite(redPin, HIGH);
+  }
+
+  delay(DELAY_AMT);
+}
+
+
+
+
+// int analogPin = A2;
+// int readVal;
+// float V2;
+
+// int delay_amt = 500;
+
+// void setup() 
+// {
+//   Serial.begin(9600);
+// }
+
+// void loop()
+// {
+
+//   readVal = analogRead(analogPin);
+//   V2 = (5./1023.)*readVal;
+
+//   Serial.println(V2);
+//   delay(delay_amt);
+// }
